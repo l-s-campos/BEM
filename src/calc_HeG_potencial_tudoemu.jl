@@ -13,7 +13,9 @@ function aplicaCDC_u(Ht, Gt, dad)
         (Fx .* normal_fonte[CDCuc, 1] + Fy .* normal_fonte[CDCuc, 2])
     # @infiltrate
     A = Ht - Gu
-    b = Gt[:, (1:n)[tipo[1:n]]] * valoresconhecidos[tipo[1:n]]
+    b =
+        Gt[:, (1:n)[tipo[1:n]]] * valoresconhecidos[tipo[1:n]] -
+        Ht[:, (1:n)[.!tipo[1:n]]] * valoresconhecidos[.!tipo[1:n]]
 
     tipouc = tipo .== 0
 
